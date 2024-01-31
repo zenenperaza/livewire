@@ -3,20 +3,39 @@
     <form class="mb-4" wire:submit='save'>
         <x-input 
             wire:model='pais'
-            placeholder="Ingrese pais" />
+            placeholder="Ingrese pais"
+            wire:keydown.space='increment' />
 
         <x-button>
             Agregar
         </x-button>
     </form>
 
-    <ul class="list-disc list-inside">  
+    <ul class="list-disc list-inside space-y-2">  
 
-        @foreach ($paises as $pais)
+        @foreach ($paises as $index => $pais)
 
-            <li>{{ $pais }}</li>
+            <li class="mt-2" wire:key='pais-{{ $index }}'>
+                {{-- <span wire:mouseenter="changeActive('{{$pais}}')">
+                    ({{ $index }}) {{ $pais }}
+                </span> --}}
+                <span >
+                    ({{ $index }}) {{ $pais }}
+                </span>
+                <x-danger-button wire:click='delete({{ $index }})'>
+                    X
+                </x-danger-button>
+            </li>
             
         @endforeach
     
     </ul>
+    {{-- {{$active}} --}}
+    {{ $count }}
+
+
+
 </div>
+
+
+

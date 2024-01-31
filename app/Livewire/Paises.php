@@ -14,6 +14,9 @@ class Paises extends Component
 
     public $pais;
 
+    // public $active;
+    public $count = 0;
+
     public function save(){
         array_push($this->paises, $this->pais);
 
@@ -25,4 +28,20 @@ class Paises extends Component
     {
         return view('livewire.paises');
     }
+
+    // public function changeActive($pais){
+    //     // dd($pais);
+    //     $this->active = $pais;
+    //     // dd($this->active);
+    // }
+
+    public function delete($index){
+        unset($this->paises[$index]);
+    }
+
+    public function increment(){
+        $this->count++;
+    }
+
+
 }
