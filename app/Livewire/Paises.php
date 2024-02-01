@@ -43,5 +43,9 @@ class Paises extends Component
         $this->count++;
     }
 
+    // public function resetea(){
+    //     $this->count = 0;
+    // }
+
 
 }

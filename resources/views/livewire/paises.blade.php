@@ -1,5 +1,11 @@
 <div>
 
+    {{-- @livewire('hijo') --}}
+
+    <x-button class="mb-4" wire:click='resetea'>
+        Reset
+    </x-button>
+
     <form class="mb-4" wire:submit='save'>
         <x-input 
             wire:model='pais'
