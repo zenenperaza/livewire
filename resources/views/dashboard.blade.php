@@ -16,7 +16,7 @@
             {{-- @livewire('contador') --}}
 
             
-            @livewire('paises')
+            @livewire('formulario')
 
            {{-- <p>contenido fuera del componente</p> --}}
         </div>
