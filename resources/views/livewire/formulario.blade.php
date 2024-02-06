@@ -4,7 +4,7 @@
             <form action="" wire:submit='save'>
                 <div class="mb-4">
                     <x-label for="">Titulo</x-label>
-                    <x-input type="text" name="title" class="w-full" wire:model='postCreate.title' />
+                    <x-input type="text" name="title" class="w-full" wire:model.live='postCreate.title' />
                     {{-- @error('title')
                         {{ $message }}
                     @enderror --}}
@@ -13,14 +13,14 @@
 
                 <div class="mb-4">
                     <x-label for="">Contenido</x-label>
-                    <x-textarea class="w-full" name='content' wire:model='postCreate.content' > </x-textarea> 
+                    <x-textarea class="w-full" name='content' wire:model.live='postCreate.content' > </x-textarea> 
                     
                     <x-input-error for="postCreate.content" />
                 </div>
 
                 <div class="mb-4">
                     <x-label for="">Categoria</x-label>
-                    <x-select class="w-full" wire:model='postCreate.category_id' > 
+                    <x-select class="w-full" wire:model.live='postCreate.category_id' > 
                         <option value="" disabled>Seleccione una categoria</option>
                         @foreach ($categories as $category)
                       
@@ -41,7 +41,7 @@
                         @foreach ($tags as $tag)
                             <li>
                                 <label for="">
-                                    <x-checkbox value="{{ $tag->id }}" wire:model='postCreate.tags'></x-checkbox>
+                                    <x-checkbox value="{{ $tag->id }}" wire:model.live='postCreate.tags'></x-checkbox>
                                     {{ $tag->name }}
                                 </label>
                             </li>
@@ -163,7 +163,7 @@
       
                 <div class="mb-4">
                     <x-label for="">Titulo</x-label>
-                    <x-input type="text" name="title" class="w-full" wire:model='postEdit.title' />
+                    <x-input type="text" name="title" class="w-full" wire:model.live='postEdit.title' />
                     <x-input-error for="postEdit.title" />
                 </div>
 

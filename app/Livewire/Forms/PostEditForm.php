@@ -4,11 +4,14 @@ namespace App\Livewire\Forms;
 
 use Livewire\Form;
 use App\Models\Post;
-use Illuminate\Validation\Rule;
+use Livewire\Attributes\Rule;
 use Livewire\Attributes\Validate;
 
 class PostEditForm extends Form
 {
+    
+    public $postId = '';
+    public $open = false;  
     
     #[Rule('required')]
     public $title;
@@ -20,14 +23,7 @@ class PostEditForm extends Form
     public $category_id = '';
     
     #[Rule('required|array')]
-    public $tags = [];
-
-    
-    public $postId = '';
-    public $open = false;
-
-
-    
+    public $tags = [];       
     
     public function edit($postId){
         
@@ -43,11 +39,11 @@ class PostEditForm extends Form
         $this->tags = $post->tags->pluck('id')->toArray();
         
     }
-    
-    public function update(){
-    
-        // $this->validate();    
-    
+
+    public function update(){    
+        
+        $this->validate();   
+
         $post = Post::find($this->postId);
     
         $post->update(
@@ -57,6 +53,7 @@ class PostEditForm extends Form
         $post->tags()->sync($this->tags);
     
         $this->reset();
-    }
+    }  
     
+   
 }
