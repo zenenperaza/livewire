@@ -14,9 +14,13 @@
            ]) --}}
 
             {{-- @livewire('contador') --}}
-
+            <div class="mt-8">
+                @livewire('comments')
+            </div>
             
             @livewire('formulario')
+
+
 
            {{-- <p>contenido fuera del componente</p> --}}
         </div>
