@@ -4,17 +4,23 @@
             <form action="" wire:submit='save'>
                 <div class="mb-4">
                     <x-label for="">Titulo</x-label>
-                    <x-input type="text" name="title" class="w-full" wire:model='title' required/>
+                    <x-input type="text" name="title" class="w-full" wire:model='postCreate.title' />
+                    {{-- @error('title')
+                        {{ $message }}
+                    @enderror --}}
+                    <x-input-error for="postCreate.title" />
                 </div>
 
                 <div class="mb-4">
                     <x-label for="">Contenido</x-label>
-                    <x-textarea class="w-full" name='content' wire:model='content' required> </x-textarea> 
+                    <x-textarea class="w-full" name='content' wire:model='postCreate.content' > </x-textarea> 
+                    
+                    <x-input-error for="postCreate.content" />
                 </div>
 
                 <div class="mb-4">
                     <x-label for="">Categoria</x-label>
-                    <x-select class="w-full" wire:model='category_id' required> 
+                    <x-select class="w-full" wire:model='postCreate.category_id' > 
                         <option value="" disabled>Seleccione una categoria</option>
                         @foreach ($categories as $category)
                       
@@ -25,6 +31,8 @@
                         
                         @endforeach    
                     </x-select> 
+                    
+                    <x-input-error for="postCreate.category_id" />
                 </div>
 
                 <div class="mb-4">
@@ -33,12 +41,14 @@
                         @foreach ($tags as $tag)
                             <li>
                                 <label for="">
-                                    <x-checkbox value="{{ $tag->id }}" wire:model='selectedTags'></x-checkbox>
+                                    <x-checkbox value="{{ $tag->id }}" wire:model='postCreate.tags'></x-checkbox>
                                     {{ $tag->name }}
                                 </label>
                             </li>
                         @endforeach    
                     </ul>
+                    
+                    <x-input-error for="postCreate.tags" />
                 </div>
 
                 <div class="flex justify-end">
@@ -153,17 +163,19 @@
       
                 <div class="mb-4">
                     <x-label for="">Titulo</x-label>
-                    <x-input type="text" name="title" class="w-full" wire:model='postEdit.title' required/>
+                    <x-input type="text" name="title" class="w-full" wire:model='postEdit.title' />
+                    <x-input-error for="postEdit.title" />
                 </div>
 
                 <div class="mb-4">
                     <x-label for="">Contenido</x-label>
-                    <x-textarea class="w-full" name='content' wire:model='postEdit.content' required> </x-textarea> 
+                    <x-textarea class="w-full" name='content' wire:model='postEdit.content' > </x-textarea> 
+                    <x-input-error for="postEdit.content" />
                 </div>
 
                 <div class="mb-4">
                     <x-label for="">Categoria</x-label>
-                    <x-select class="w-full" wire:model='postEdit.category_id' required> 
+                    <x-select class="w-full" wire:model='postEdit.category_id' > 
                         <option value="" disabled>Seleccione una categoria</option>
                         @foreach ($categories as $category)
                       
@@ -174,6 +186,8 @@
                         
                         @endforeach    
                     </x-select> 
+                    
+                    <x-input-error for="postEdit.category_id" />
                 </div>
 
                 <div class="mb-4">
@@ -188,6 +202,8 @@
                             </li>
                         @endforeach    
                     </ul>
+                    
+                    <x-input-error for="postEdit.tags" />
                 </div>
           
         </x-slot>
