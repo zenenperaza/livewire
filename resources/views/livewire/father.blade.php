@@ -27,6 +27,7 @@
     </div>
 
     <script>
+        
         console.log('hola padre');
     </script>
 </div>

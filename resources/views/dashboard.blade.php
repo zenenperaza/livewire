@@ -16,13 +16,13 @@
             {{-- @livewire('contador') --}}
 
 
-            {{-- <div class="mt-8">
+            <div class="mt-8">
                 @livewire('comments')
             </div>
             
-            @livewire('formulario') --}}
-
-            @livewire('father')
+            @livewire('formulario')
+{{-- 
+            @livewire('father') --}}
 
 
 
