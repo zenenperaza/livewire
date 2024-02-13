@@ -10,10 +10,13 @@ use App\Models\Tag;
 use Livewire\Attributes\Lazy;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 #[Lazy()]
 class Formulario extends Component
 {
+    use WithFileUploads;
+    
     public $categories, $tags;
 
     public PostCreateForm $postCreate;

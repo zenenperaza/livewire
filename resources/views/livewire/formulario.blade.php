@@ -34,8 +34,20 @@
                     
                     <x-input-error for="postCreate.category_id" />
                 </div>
+                
 
                 <div class="mb-4">
+                    <x-label for="">Imagen</x-label>
+                   <input type="file" src="" alt="" wire:model='postCreate.image' wire:key='{{ $postCreate->imageKey }}'>
+                    
+                    <x-input-error for="postCreate.category_id" />
+                </div>
+
+                @if ($postCreate->image)
+                    <img src="{{ $postCreate->image->temporaryUrl() }}" alt="" width="300" >
+                @endif
+
+                <div class="mb-4 mt-4">
                     <x-label for="">Etiquetas</x-label>
                     <ul>
                         @foreach ($tags as $tag)
