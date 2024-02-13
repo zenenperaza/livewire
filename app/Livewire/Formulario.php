@@ -7,9 +7,11 @@ use App\Livewire\Forms\PostEditForm;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
+use Livewire\Attributes\Lazy;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 
+#[Lazy()]
 class Formulario extends Component
 {
     public $categories, $tags;
@@ -23,7 +25,6 @@ class Formulario extends Component
     public function mount(){
         $this->categories = Category::all();
         $this->tags = Tag::all();
-
         $this->posts = Post::all();
     }
     public function updating($property, $value){
@@ -82,6 +83,10 @@ class Formulario extends Component
 
         $this->dispatch('post-created', 'Articulo eliminado');
 
+    }
+
+    public function placeholder(){
+        return view('livewire.placeholder.skeleton');
     }
 
     public function render()

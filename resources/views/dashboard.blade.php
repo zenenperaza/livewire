@@ -15,12 +15,14 @@
 
             {{-- @livewire('contador') --}}
 
+            <livewire:formulario lazy>
+
 
             <div class="mt-8">
                 @livewire('comments')
             </div>
             
-            @livewire('formulario')
+            {{-- @livewire('formulario') --}}
 {{-- 
             @livewire('father') --}}
 
