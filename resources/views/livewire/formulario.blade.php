@@ -38,10 +38,31 @@
 
                 <div class="mb-4">
                     <x-label for="">Imagen</x-label>
-                   <input type="file" src="" alt="" wire:model='postCreate.image' wire:key='{{ $postCreate->imageKey }}'>
+
+                    <div
+                    x-data="{ uploading: false, progress: 0 }"
+                    x-on:livewire-upload-start="uploading = true"
+                    x-on:livewire-upload-finish="uploading = false"
+                    x-on:livewire-upload-cancel="uploading = false"
+                    x-on:livewire-upload-error="uploading = false"
+                    x-on:livewire-upload-progress="progress = $event.detail.progress"
+                >
+                    <!-- File Input --> 
+                    <input type="file" src="" alt="" wire:model='postCreate.image' wire:key='{{ $postCreate->imageKey }}'>
+             
+                    <!-- Progress Bar -->
+                    <div x-show="uploading">
+                        <div x-text="progress"></div>
+                        <progress max="100" x-bind:value="progress"></progress>
+                    </div>
+                </div>
+
+                  
                     
                     <x-input-error for="postCreate.category_id" />
                 </div>
+
+
 
                 @if ($postCreate->image)
                     <img src="{{ $postCreate->image->temporaryUrl() }}" alt="" width="300" >
