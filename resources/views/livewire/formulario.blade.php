@@ -91,10 +91,10 @@
                 </div>
             </form>
 
-            <div class="flex justify-between" wire:loading.delay>
+            {{-- <div class="flex justify-between" wire:loading.delay>
                 <div>Hola</div>
                 <div>Mundo</div>
-            </div>
+            </div> --}}
 
 
             {{-- <div wire:loading wire:target='save'>Procesando... </div> --}}
@@ -120,6 +120,9 @@
                 </li>
             @endforeach
         </ul>
+        <div class="mt-4">
+            {{ $posts->links() }}
+        </div>
     </div>
 
     {{-- @if ($open)
