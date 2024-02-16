@@ -9,6 +9,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use Livewire\Attributes\Lazy;
 use Livewire\Attributes\Rule;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
@@ -23,6 +24,9 @@ class Formulario extends Component
 
     public PostCreateForm $postCreate;
     public PostEditForm $postEdit;
+
+    #[Url(as: 's')]
+    public $search = '';
 
     // public $posts;
 
@@ -104,7 +108,12 @@ class Formulario extends Component
 
     public function render()
     {
-        $posts = Post::orderBy('id', 'desc')->paginate(5, pageName: 'pagePost');
+        $posts = Post::orderBy('id', 'desc')
+        ->when($this->search, function($query){
+            $query->where('title', 'like', '%' . $this->search . '%');
+        })
+        ->paginate(5, pageName: 'pagePosts');
+
         return view('livewire.formulario', compact('posts') );
     }
 }
