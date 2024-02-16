@@ -14,13 +14,13 @@
            ]) --}}
 
             {{-- @livewire('contador') --}}
-
+{{-- 
             <livewire:formulario lazy>
 
 
             <div class="mt-8">
                 @livewire('comments')
-            </div>
+            </div> --}}
             
             {{-- @livewire('formulario') --}}
 {{-- 
@@ -29,6 +29,8 @@
 
 
            {{-- <p>contenido fuera del componente</p> --}}
+
+           @livewire('ComputedComponent')
         </div>
     </div>
 </x-app-layout>
